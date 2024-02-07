@@ -1,0 +1,18 @@
+<div class="card mb-3">
+    <h5 class="card-header">Categories</h5>
+    <div class="card-body">
+      
+      {% for category in categories %}
+      <a href={{ category.get_absolute_url }} class ="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{category}}</a>
+      <br>
+      {% endfor %}
+        
+      <!-- Repeat this section for each popular post -->
+      {% comment %} <h6 class="card-subtitle mb-2 text-muted">Popular Post Title</h6> {% endcomment %}
+      {% comment %} <p class="card-text">Short description...</p> {% endcomment %}
+      {% comment %} <a href="" class = "card-link badge bg-primary">Category</a>
+      <br>
+      <a href="">Category</a> {% endcomment %}
+      <!-- End of popular post section -->
+    </div>
+  </div>

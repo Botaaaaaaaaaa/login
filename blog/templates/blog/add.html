@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+{% comment %} <form action="" method= "post">
+    Text: <input type="text"><br>
+    Password: <input type="password"><br>
+    Email: <input type="email"><br>
+    Checkbox: <input type="checkbox"><br>
+    Radio: <input type="radio"><br>
+    Number: <input type="number"><br>
+    {% csrf_token %}
+    <button type = "submit">Send</button>
+</form>
+
+<br><br><br> {% endcomment %}
+
+<form action="" method= "post" class = "p-5" enctype = "multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type = "submit">Send</button>
+</form>
+
+
+
+{% endblock content %}
+    
+

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% comment %} <div class="" style = "margin:auto 0"> {% endcomment %}
+<main class="w-50 text-center m-auto p-auto mt-5">
+  <form class = "p-4" method = "post">
+    {% csrf_token %}
+
+    
+    {% comment %} <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> {% endcomment %}
+    <h1 class = "p-1">Авторизация</h1>
+    <input type="hidden" name="next" value ="{{ next }}">
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {{form.non_field_errors}}
+        </div>
+    {% endif %}
+    
+    {% for f in form %}
+        <div class="form-label-group p-1 mb-2">
+            {{f}}
+            {% comment %} <input type="text" class="form-control" placeholder="Login"> {% endcomment %}
+        </div>
+        
+        {% if f.errors %}
+            <div class="alert alert-warning" role="alert">
+                {{f.errors}}
+            </div>
+        {% endif %}
+            
+    {% endfor %}
+
+    <div class="form-check text-center p-1">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+        Remember me
+      </label>
+    </div>
+    <a href="{% url 'password_reset' %}">Забыли Пароль?</a>
+    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+  </form>
+</main>
+{% comment %} </div> {% endcomment %}
+{% comment %} <form action="" method = "post" class = "p-5">
+    <h1>Авторизация</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
+     {% endcomment %}
+{% endblock content %}
+    

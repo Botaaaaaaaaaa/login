@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+{% load custom_filters %}
+{% load custom_tags %}
+{% load static %}
+
+
+{% block content %}
+
+    
+    <!-- Search Results Section -->
+    <div class="container mt-4">
+        <h2>Search Results {{results}} for: {{query}}</h2>
+        {% for result in posts %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ result.title }}</h5>
+                    <p class="small text-muted">
+                        Written by 
+                        <a href={{ result.author.get_absolute_url }}>{{result.author}}</a>  on Date {{result.created_at}}
+                      </p>
+                    <p class="card-text">{{ result.content }}</p>
+                    <a href="{{ result.get_absolute_url }}" class="btn btn-primary">Read More</a>
+                    <p class="small text-muted">
+                        Tags: 
+                        
+                        {% for tag in result.tags.all %}
+                        <a href={{ tag.get_absolute_url }}>{{tag}}</a>
+                  
+                        {% endfor %}
+                          
+                      </p>
+                </div>
+            </div>
+        {% empty %}
+            <p>No results found.</p>
+        {% endfor %}
+    </div>
+    
+{% endblock content %}

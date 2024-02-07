@@ -1,0 +1,13 @@
+<div class="card mb-3">
+    <h5 class="card-header">Тэги</h5>
+    <div class="card-body">
+      <!-- Repeat this section for each popular post -->
+    
+      {% for tag in tags %}
+        <a href={{ tag.get_absolute_url }} class = "badge bg-primary">{{ tag.tag_name }}</a>
+      {% empty %}
+        Тэги Отсутвуют
+      {% endfor %}
+      <!-- End of popular post section -->
+    </div>
+  </div>
